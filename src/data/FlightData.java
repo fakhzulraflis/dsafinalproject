@@ -11,53 +11,53 @@ public class FlightData {
     public static void load(Graph<Airport> graph) {
 
         // List Kota
-        Airport AMQ = new Airport("AMQ");
-        Airport BPN = new Airport("BPN");
-        Airport BTJ = new Airport("BTJ");
-        Airport TKG = new Airport("TKG");
-        Airport BDJ = new Airport("BDJ");
-        Airport BWX = new Airport("BWX");
-        Airport BTH = new Airport("BTH");
-        Airport BUW = new Airport("BUW");
-        Airport BKS = new Airport("BKS");
-        Airport BIK = new Airport("BIK");
-        Airport DPS = new Airport("DPS");
-        Airport GTO = new Airport("GTO");
-        Airport CGK = new Airport("CGK");
-        Airport DJB = new Airport("DJB");
-        Airport DJJ = new Airport("DJJ");
-        Airport DHX = new Airport("DHX");
-        Airport KDI = new Airport("KDI");
-        Airport KOE = new Airport("KOE");
-        Airport LBJ = new Airport("LBJ");
-        Airport LUV = new Airport("LUV");
-        Airport LOP = new Airport("LOP");
-        Airport LUW = new Airport("LUW");
-        Airport UPG = new Airport("UPG");
-        Airport MDC = new Airport("MDC");
-        Airport MKW = new Airport("MKW");
-        Airport KNO = new Airport("KNO");
-        Airport MKQ = new Airport("MKQ");
-        Airport PDG = new Airport("PDG");
-        Airport PKY = new Airport("PKY");
-        Airport PLM = new Airport("PLM");
-        Airport PLW = new Airport("PLW");
-        Airport PGK = new Airport("PGK");
-        Airport PKU = new Airport("PKU");
-        Airport PNK = new Airport("PNK");
-        Airport AAP = new Airport("AAP");
-        Airport SRG = new Airport("SRG");
-        Airport DTB = new Airport("DTB");
-        Airport SKJ = new Airport("SKJ");
-        Airport SOC = new Airport("SOC");
-        Airport SOQ = new Airport("SOQ");
-        Airport SUB = new Airport("SUB");
-        Airport TJQ = new Airport("TJQ");
-        Airport TRK = new Airport("TRK");
-        Airport TTE = new Airport("TTE");
-        Airport TIM = new Airport("TIM");
-        Airport YIA = new Airport("YIA");
-        Airport WGP = new Airport("WGP");
+        Airport AMQ = new Airport("AMQ"); // Ambon
+        Airport BPN = new Airport("BPN"); // Balikpapan
+        Airport BTJ = new Airport("BTJ"); // Banda Aceh
+        Airport TKG = new Airport("TKG"); // Bandar Lampung
+        Airport BDJ = new Airport("BDJ"); // Banjarmasin
+        Airport BWX = new Airport("BWX"); // Banyuwangi
+        Airport BTH = new Airport("BTH"); // Batam
+        Airport BUW = new Airport("BUW"); // Bau - Bau
+        Airport BKS = new Airport("BKS"); // Bengkulu
+        Airport BIK = new Airport("BIK"); // Biak
+        Airport DPS = new Airport("DPS"); // Denpasar/Bali
+        Airport GTO = new Airport("GTO"); // Gorontalo
+        Airport CGK = new Airport("CGK"); // Jakarta
+        Airport DJB = new Airport("DJB"); // Jambi
+        Airport DJJ = new Airport("DJJ"); // Jayapura
+        Airport DHX = new Airport("DHX"); // Kediri
+        Airport KDI = new Airport("KDI"); // Kendari
+        Airport KOE = new Airport("KOE"); // Kupang
+        Airport LBJ = new Airport("LBJ"); // Labuan Bajo
+        Airport LUV = new Airport("LUV"); // Langgur
+        Airport LOP = new Airport("LOP"); // Lombok
+        Airport LUW = new Airport("LUW"); // Luwuk
+        Airport UPG = new Airport("UPG"); // Makassar
+        Airport MDC = new Airport("MDC"); // Manado
+        Airport MKW = new Airport("MKW"); // Manokwari
+        Airport KNO = new Airport("KNO"); // Medan
+        Airport MKQ = new Airport("MKQ"); // Merauke
+        Airport PDG = new Airport("PDG"); // Padang
+        Airport PKY = new Airport("PKY"); // Palangkaraya
+        Airport PLM = new Airport("PLM"); // Palembang
+        Airport PLW = new Airport("PLW"); // Palu
+        Airport PGK = new Airport("PGK"); // Pangkal Pinang
+        Airport PKU = new Airport("PKU"); // Pekanbaru
+        Airport PNK = new Airport("PNK"); // Pontianak
+        Airport AAP = new Airport("AAP"); // Samarinda
+        Airport SRG = new Airport("SRG"); // Semarang
+        Airport DTB = new Airport("DTB"); // Siborong borong
+        Airport SKJ = new Airport("SKJ"); // Singkawang
+        Airport SOC = new Airport("SOC"); // Surakarta/solo
+        Airport SOQ = new Airport("SOQ"); // Sorong
+        Airport SUB = new Airport("SUB"); // Surabaya
+        Airport TJQ = new Airport("TJQ"); // Tanjung Pandan
+        Airport TRK = new Airport("TRK"); // Tarakan
+        Airport TTE = new Airport("TTE"); // Ternate
+        Airport TIM = new Airport("TIM"); // Timika / Tembagapura
+        Airport YIA = new Airport("YIA"); // Yogyakarta
+        Airport WGP = new Airport("WGP"); // Waingapu
 
         // Simpan Kode IATA ke hash map
         airports.put("AMQ", AMQ);
@@ -109,14 +109,14 @@ public class FlightData {
         airports.put("WGP", WGP);
 
         // Flight Direction :
-        // AMQ
+        // AMQ (Ambon)
         graph.addEdge(AMQ, CGK, 3689290);
         graph.addEdge(AMQ, UPG, 1958715);
         graph.addEdge(AMQ, LUV, 1520371);
         graph.addEdge(AMQ, SOQ, 1240011);
         graph.addEdge(AMQ, SUB, 2752816);
 
-        // BPN
+        // BPN (Balikpapan)
         graph.addEdge(BPN, DPS, 1788183);
         graph.addEdge(BPN, CGK, 1999814);
         graph.addEdge(BPN, UPG, 1363133);
@@ -124,14 +124,14 @@ public class FlightData {
         graph.addEdge(BPN, SUB, 1704645);
         graph.addEdge(BPN, YIA, 1664043);
 
-        // BTJ
+        // BTJ (Banda Aceh)
         graph.addEdge(BTJ, KNO, 1191642);
 
-        // TKG
+        // TKG (Bandar Lampung)
         graph.addEdge(TKG, BTH, 1667431);
         graph.addEdge(TKG, CGK, 689264);
 
-        // BDJ
+        // BDJ (Banjarmasin)
         graph.addEdge(BDJ, BPN, 1758279);
         graph.addEdge(BDJ, DPS, 1502264);
         graph.addEdge(BDJ, CGK, 1546715);
@@ -140,10 +140,10 @@ public class FlightData {
         graph.addEdge(BDJ, SUB, 1221914);
         graph.addEdge(BDJ, YIA, 1681504);
 
-        // BWX
+        // BWX (Banyuwangi)
         graph.addEdge(BWX, CGK, 1777741);
 
-        // BTH
+        // BTH (Batam)
         graph.addEdge(BTH, CGK, 1561039);
         graph.addEdge(BTH, KNO, 1253043);
         graph.addEdge(BTH, PDG, 1152299);
@@ -154,16 +154,16 @@ public class FlightData {
         graph.addEdge(BTH, SUB, 2044168);
         graph.addEdge(BTH, YIA, 2064059);
 
-        // BUW
+        // BUW (Baubau)
         graph.addEdge(BUW, UPG, 1613749);
 
-        // BKS
+        // BKS (Bengkulu)
         graph.addEdge(BKS, CGK, 1403010);
 
-        // BIK
+        // BIK (Biak)
         graph.addEdge(BIK, DJJ, 1365521);
 
-        // DPS
+        // DPS (Denpasar)
         graph.addEdge(DPS, BPN, 1784005);
         graph.addEdge(DPS, BDJ, 1557658);
         graph.addEdge(DPS, CGK, 1901257);
@@ -175,11 +175,11 @@ public class FlightData {
         graph.addEdge(DPS, SUB, 901352);
         graph.addEdge(DPS, YIA, 1503557);
 
-        // GTO
+        // GTO (Gorontalo)
         graph.addEdge(GTO, CGK, 2753845);
         graph.addEdge(GTO, UPG, 1846760);
 
-        // CGK
+        // CGK (Jakarta)
         graph.addEdge(CGK, KNO, 1762416);
         graph.addEdge(CGK, BTH, 1645775);
         graph.addEdge(CGK, SUB, 1341237);
@@ -200,30 +200,33 @@ public class FlightData {
         graph.addEdge(CGK, BKS, 1404995);
         graph.addEdge(CGK, DHX, 1186785);
 
-        // DJJ
+        // DJB (Jambi)
+        graph.addEdge(DJB, CGK, 1443021);
+
+        // DJJ (Jayapura)
         graph.addEdge(DJJ, UPG, 3266610);
         graph.addEdge(DJJ, SOQ, 1828710);
         graph.addEdge(DJJ, MKQ, 1525387);
         graph.addEdge(DJJ, TIM, 1173830);
 
-        // DHX
+        // DHX (Kediri)
         graph.addEdge(DHX, CGK, 1315937);
 
-        // KDI
+        // KDI (Kendari)
         graph.addEdge(KDI, CGK, 2311338);
         graph.addEdge(KDI, UPG, 1017490);
 
-        // KOE
+        // KOE (Kupang)
         graph.addEdge(KOE, DPS, 1884689);
         graph.addEdge(KOE, CGK, 1805656);
         graph.addEdge(KOE, SUB, 1957846);
         graph.addEdge(KOE, WGP, 1572314);
 
-        // LBJ
+        // LBJ (Labuan Bajo)
         graph.addEdge(LBJ, KOE, 1557261);
         graph.addEdge(LBJ, LOP, 1791168);
 
-        // LOP
+        // LOP (Lombok)
         graph.addEdge(LOP, DPS, 698438);
         graph.addEdge(LOP, CGK, 1837907);
         graph.addEdge(LOP, LBJ, 1661445);
@@ -231,10 +234,10 @@ public class FlightData {
         graph.addEdge(LOP, YIA, 1613350);
         graph.addEdge(LOP, WGP, 1717037);
 
-        // LUW
+        // LUW (Luwuk)
         graph.addEdge(LUW, MDC, 1653031);
 
-        // UPG
+        // UPG (Makassar)
         graph.addEdge(UPG, AMQ, 2028166);
         graph.addEdge(UPG, BPN, 1366614);
         graph.addEdge(UPG, BDJ, 1627371);
@@ -255,41 +258,41 @@ public class FlightData {
         graph.addEdge(UPG, TIM, 3084814);
         graph.addEdge(UPG, YIA, 1800425);
 
-        // MDC
+        // MDC (Manado)
         graph.addEdge(MDC, LUW, 1570606);
         graph.addEdge(MDC, UPG, 1878206);
         graph.addEdge(MDC, SOQ, 1647979);
         graph.addEdge(MDC, SUB, 2665852);
         graph.addEdge(MDC, TTE, 1312712);
 
-        // MKW
+        // MKW (Manokwari)
         graph.addEdge(MKW, UPG, 2621477);
         graph.addEdge(MKW, SOQ, 976074);
 
-        // KNO
+        // KNO (Medan)
         graph.addEdge(KNO, BTJ, 1211422);
         graph.addEdge(KNO, BTH, 1150708);
         graph.addEdge(KNO, CGK, 1836615);
         graph.addEdge(KNO, PDG, 1407190);
         graph.addEdge(KNO, PKU, 1242499);
 
-        // MKQ
+        // MKQ (Merauke)
         graph.addEdge(MKQ, DJJ, 1461391);
         graph.addEdge(MKQ, UPG, 3532441);
 
-        // PDG
+        // PDG (Padang)
         graph.addEdge(PDG, BTH, 1237129);
         graph.addEdge(PDG, CGK, 1808769);
         graph.addEdge(PDG, KNO, 1381830);
 
-        // PKY
+        // PKY (Palangkaraya)
         graph.addEdge(PKY, BPN, 1815633);
         graph.addEdge(PKY, CGK, 1622095);
         graph.addEdge(PKY, SRG, 1507237);
         graph.addEdge(PKY, SUB, 1259904);
         graph.addEdge(PKY, YIA, 1732492);
 
-        // PLM
+        // PLM (Palembang)
         graph.addEdge(PLM, BTH, 1150480);
         graph.addEdge(PLM, CGK, 941698);
         graph.addEdge(PLM, KNO, 1954563);
@@ -297,48 +300,48 @@ public class FlightData {
         graph.addEdge(PLM, SUB, 1657676);
         graph.addEdge(PLM, YIA, 1870029);
 
-        // PLW
+        // PLW (Palu)
         graph.addEdge(PLW, UPG, 1413292);
         graph.addEdge(PLW, SUB, 1990992);
 
-        // PGK
+        // PGK (Pangkal Pinang)
         graph.addEdge(PGK, CGK, 1105443);
         graph.addEdge(PGK, TJQ, 725417);
 
-        // PKU
+        // PKU (Pekabaru)
         graph.addEdge(PKU, CGK, 1711438);
         graph.addEdge(PKU, BTH, 919931);
         graph.addEdge(PKU, KNO, 1261268);
 
-        // PNK
+        // PNK (Pontianak)
         graph.addEdge(PNK, CGK, 1478459);
         graph.addEdge(PNK, SUB, 1681757);
         graph.addEdge(PNK, BTH, 1545151);
         graph.addEdge(PNK, SRG, 1824012);
 
-        // AAP
+        // AAP (Samarinda)
         graph.addEdge(AAP, SUB, 1708344);
 
-        // SRG
+        // SRG (Semarang)
         graph.addEdge(SRG, PNK, 1813989);
         graph.addEdge(SRG, BDJ, 1558319);
         graph.addEdge(SRG, BPN, 1920436);
 
-        // DTB
+        // DTB (Siborong-borong)
         graph.addEdge(DTB, CGK, 2043075);
 
-        // SKJ
+        // SKJ (Singkawang)
         graph.addEdge(SKJ, CGK, 1744525);
 
-        // SOC
+        // SOC (Surakarta/Solo)
         graph.addEdge(SOC, DPS, 1345625);
 
-        // SOQ
+        // SOQ (Sorong)
         graph.addEdge(SOQ, MKW, 1019989);
         graph.addEdge(SOQ, DJJ, 1838579);
         graph.addEdge(SOQ, UPG, 2023983);
 
-        // SUB
+        // SUB (Surabaya)
         graph.addEdge(SUB, CGK, 1354521);
         graph.addEdge(SUB, DPS, 796104);
         graph.addEdge(SUB, BPN, 1738229);
@@ -352,22 +355,22 @@ public class FlightData {
         graph.addEdge(SUB, TRK, 2341434);
         graph.addEdge(SUB, KOE, 2047355);
 
-        // TJQ
+        // TJQ (Tanjung Pandan)
         graph.addEdge(TJQ, PGK, 700991);
 
-        // TRK
+        // TRK (Tarakan)
         graph.addEdge(TRK, BPN, 1352815);
         graph.addEdge(TRK, SUB, 2313342);
 
-        // TTE
+        // TTE (Ternate)
         graph.addEdge(TTE, UPG, 1848074);
         graph.addEdge(TTE, MDC, 1412989);
 
-        // TIM
+        // TIM (Tembagapura/Timika)
         graph.addEdge(TIM, UPG, 2856569);
         graph.addEdge(TIM, DJJ, 1204296);
 
-        // YIA
+        // YIA (Yogyakarta)
         graph.addEdge(YIA, BPN, 1858368);
         graph.addEdge(YIA, BDJ, 1716139);
         graph.addEdge(YIA, DPS, 1541127);
@@ -379,7 +382,7 @@ public class FlightData {
         graph.addEdge(YIA, PLM, 1921736);
         graph.addEdge(YIA, PKU, 2307043);
 
-        // WGP
+        // WGP (Waingapu)
         graph.addEdge(WGP, LOP, 1724137);
         graph.addEdge(WGP, KOE, 1612592);
     }

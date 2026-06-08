@@ -1,19 +1,21 @@
 package com.datastruct;
 
-/* 
- * Struktur data Graph dengan bobot pada setiap edge
- * sources: https://www.lavivienpost.net/weighted-graph-as-adjacency-list/  
- * 
+/*
+ * Graph berbobot yang disimpan dalam bentuk adjacency list.
+ * Setiap vertex memiliki daftar edge yang menghubungkannya ke vertex lain.
+ * Sumber referensi:
+ * https://www.lavivienpost.net/weighted-graph-as-adjacency-list/
  */
 import java.util.*;
 
+// Menyimpan hubungan dari satu vertex ke vertex tetangga beserta bobotnya.
 class Edge<T> {
 
     private T vertex;
-    private T neighbor; //connected vertex
-    private int weight; //weight
+    private T neighbor;
+    private int weight;
 
-    //Constructor, Time O(1) Space O(1)
+    // Membuat edge dari vertex u ke vertex v dengan bobot w.
     public Edge(T u, T v, int w) {
         this.vertex = u;
         this.neighbor = v;
@@ -36,11 +38,12 @@ class Edge<T> {
         this.weight = weight;
     }
 
+    // Mengembalikan bobot edge.
     public int getWeight() {
         return weight;
     }
 
-    //Time O(1) Space O(1)
+    // Menampilkan edge dalam format (vertex, tetangga, bobot).
     @Override
     public String toString() {
         return "(" + vertex + "," + neighbor + "," + weight + ")";
@@ -49,28 +52,32 @@ class Edge<T> {
 
 public class Graph<T> {
 
-    //Map<T, LinkedList<Edge<T>>> adj;
+    // Memetakan setiap vertex ke daftar edge yang keluar dari vertex tersebut.
     private Map<T, MyLinearList<Edge<T>>> adj;
+    // Bernilai true untuk directed graph dan false untuk SOQundirected graph.
     boolean directed;
 
-    //Constructor, Time O(1) Space O(1)
+    // Membuat graph sesuai jenis yang diberikan.
     public Graph(boolean type) {
         adj = new LinkedHashMap<>();
-        directed = type; // false: undirected, true: directed
+        directed = type;
     }
 
-    //Add edges including adding nodes, Time O(1) Space O(1)
+    // Menambahkan dua vertex jika belum ada, lalu menghubungkannya dengan edge.
     public void addEdge(T a, T b, int w) {
-        adj.putIfAbsent(a, new MyLinearList<>()); //add node
-        adj.putIfAbsent(b, new MyLinearList<>()); //add node
+        adj.putIfAbsent(a, new MyLinearList<>());
+        adj.putIfAbsent(b, new MyLinearList<>());
         Edge<T> edge1 = new Edge<>(a, b, w);
-        adj.get(a).pushQ(edge1);//add(edge1); //add edge
-        if (!directed) { //undirected
+        adj.get(a).pushQ(edge1);
+
+        // Undirected graph membutuhkan edge dengan arah sebaliknya.
+        if (!directed) {
             Edge<T> edge2 = new Edge<>(b, a, w);
             adj.get(b).pushQ(edge2);
         }
     }
 
+    // Menghapus hubungan dari a ke b, termasuk arah sebaliknya pada undirected graph.
     public boolean deleteEdge(T a, T b) {
         if (!adj.containsKey(a) || !adj.containsKey(b)) {
             return false;
@@ -85,6 +92,7 @@ public class Graph<T> {
         return deleted;
     }
 
+    // Mencari dan menghapus semua edge yang menuju neighbor dari sebuah daftar.
     private boolean deleteEdgeFromList(MyLinearList<Edge<T>> list, T neighbor) {
         boolean deleted = false;
         Node<Edge<T>> curr = list.head;
@@ -101,10 +109,9 @@ public class Graph<T> {
         return deleted;
     }
 
-    //Print graph as hashmap, Time O(V+E), Space O(1)
+    // Menampilkan setiap vertex beserta seluruh edge yang dimilikinya.
     public void printGraph() {
         for (T key : adj.keySet()) {
-            //System.out.println(key.toString() + " : " + adj.get(key).toString());
             System.out.print(key.toString() + " : ");
             MyLinearList<Edge<T>> thelist = adj.get(key);
             Node<Edge<T>> curr = thelist.head;
@@ -116,10 +123,12 @@ public class Graph<T> {
         }
     }
 
+    // Menghasilkan urutan kunjungan Depth First Search (DFS) menggunakan stack.
     public MyLinearList<T> DFSOrder(T start) {
         MyLinearList<T> visited = new MyLinearList<>();
         MyLinearList<T> stack = new MyLinearList<>();
 
+        // Graph kosong dikembalikan jika vertex awal tidak ditemukan.
         if (!adj.containsKey(start)) {
             return visited;
         }
@@ -132,6 +141,7 @@ public class Graph<T> {
             if (!contains(visited, current)) {
                 visited.pushQ(current);
 
+                // Tetangga ditampung sementara agar urutan masuk stack tetap sesuai.
                 MyLinearList<Edge<T>> list = adj.get(current);
                 Node<Edge<T>> curr = list.head;
                 MyLinearList<T> temp = new MyLinearList<>();
@@ -153,6 +163,7 @@ public class Graph<T> {
         return visited;
     }
 
+    // Menghasilkan urutan kunjungan Breadth First Search (BFS) menggunakan queue.
     public MyLinearList<T> BFSOrder(T start) {
         MyLinearList<T> visited = new MyLinearList<>();
         MyLinearList<T> queue = new MyLinearList<>();
@@ -183,17 +194,19 @@ public class Graph<T> {
         return visited;
     }
 
+    // Mencetak hasil penelusuran DFS mulai dari vertex start.
     public void printDFS(T start) {
         System.out.print("DFS dari " + start + " : ");
         DFSOrder(start).cetakList();
     }
 
+    // Mencetak hasil penelusuran BFS mulai dari vertex start.
     public void printBFS(T start) {
         System.out.print("BFS dari " + start + " : ");
         BFSOrder(start).cetakList();
     }
 
-    // DFS: check if path exists
+    // Memeriksa apakah dest dapat dicapai dari src menggunakan DFS.
     public boolean DFS(T src, T dest) {
         if (!adj.containsKey(src) || !adj.containsKey(dest)) {
             return false;
@@ -202,7 +215,7 @@ public class Graph<T> {
         return contains(DFSOrder(src), dest);
     }
 
-    // BFS: check if path exists
+    // Memeriksa apakah dest dapat dicapai dari src menggunakan BFS.
     public boolean BFS(T src, T dest) {
         if (!adj.containsKey(src) || !adj.containsKey(dest)) {
             return false;
@@ -210,8 +223,11 @@ public class Graph<T> {
 
         return contains(BFSOrder(src), dest);
     }
+
+    // Menghitung jarak terpendek dari satu vertex dengan algoritma Dijkstra.
     public static class Dijkstra<T> {
 
+        // Menyimpan hasil sementara Dijkstra untuk sebuah vertex.
         private static class DijkstraNode<T> {
 
             T vertex;
@@ -225,6 +241,7 @@ public class Graph<T> {
             }
         }
 
+        // Mengembalikan jarak terpendek dari start ke seluruh vertex.
         public MyLinearList<String> dijkstra(Graph<T> g, T start) {
             MyLinearList<DijkstraNode<T>> table = createTable(g);
             MyLinearList<String> result = new MyLinearList<>();
@@ -245,6 +262,7 @@ public class Graph<T> {
             return result;
         }
 
+        // Mencetak jarak terpendek dari start ke seluruh vertex.
         public void printShortestPath(Graph<T> g, T start) {
             MyLinearList<DijkstraNode<T>> table = createTable(g);
             runDijkstra(g, start, table);
@@ -263,6 +281,7 @@ public class Graph<T> {
             }
         }
 
+        // Mencetak rute dan rincian biaya termurah dari start ke destination.
         public void printShortestPath(Graph<T> g, T start, T destination) {
             MyLinearList<DijkstraNode<T>> table = createTable(g);
 
@@ -302,6 +321,7 @@ public class Graph<T> {
 
             Node<T> curr = pathList.head;
 
+            // Membaca setiap pasangan vertex pada rute untuk menampilkan harga per edge.
             while (curr != null && curr.getNext() != null) {
 
                 T from = curr.getData();
@@ -320,6 +340,7 @@ public class Graph<T> {
             System.out.println("\nTotal Cost\t: Rp " + destinationData.distance);
         }
 
+        // Menjalankan Dijkstra dengan min-heap sebagai priority queue.
         private void runDijkstra(Graph<T> g, T start, MyLinearList<DijkstraNode<T>> table) {
             Heap<Integer, T> pq = new Heap<Integer, T>(countEdges(g) + 1, true);
             DijkstraNode<T> startData = getData(table, start);
@@ -337,6 +358,7 @@ public class Graph<T> {
                 int currentDistance = heapNode.getKey();
                 DijkstraNode<T> currentData = getData(table, current);
 
+                // Abaikan data heap lama jika jarak yang lebih pendek sudah ditemukan.
                 if (currentDistance > currentData.distance) {
                     continue;
                 }
@@ -349,6 +371,7 @@ public class Graph<T> {
                     DijkstraNode<T> neighborData = getData(table, neighbor);
                     int newDistance = currentData.distance + edge.getWeight();
 
+                    // Perbarui jarak dan asal sebelumnya jika rute baru lebih murah.
                     if (newDistance < neighborData.distance) {
                         neighborData.distance = newDistance;
                         neighborData.previous = current;
@@ -360,6 +383,7 @@ public class Graph<T> {
             }
         }
 
+        // Membuat tabel awal dengan jarak tak terhingga untuk setiap vertex.
         private MyLinearList<DijkstraNode<T>> createTable(Graph<T> g) {
             MyLinearList<DijkstraNode<T>> table = new MyLinearList<>();
 
@@ -370,6 +394,7 @@ public class Graph<T> {
             return table;
         }
 
+        // Mengambil data Dijkstra milik vertex tertentu dari tabel.
         private DijkstraNode<T> getData(MyLinearList<DijkstraNode<T>> table, T vertex) {
             Node<DijkstraNode<T>> curr = table.head;
 
@@ -383,6 +408,7 @@ public class Graph<T> {
             return null;
         }
 
+        // Menghitung jumlah edge untuk menentukan kapasitas awal heap.
         private int countEdges(Graph<T> g) {
             int total = 0;
 
@@ -397,6 +423,7 @@ public class Graph<T> {
             return total;
         }
 
+        // Menyusun teks rute dengan mengikuti previous dari tujuan kembali ke awal.
         private String buildPath(MyLinearList<DijkstraNode<T>> table, T start, T destination) {
             MyLinearList<T> path = new MyLinearList<>();
             T current = destination;
@@ -420,6 +447,7 @@ public class Graph<T> {
             return text.toString();
         }
 
+        // Menyusun rute sebagai list agar setiap edge dapat diproses secara terpisah.
         private MyLinearList<T> getPathList(MyLinearList<DijkstraNode<T>> table, T start, T destination) {
 
             MyLinearList<T> path = new MyLinearList<>();
@@ -440,6 +468,7 @@ public class Graph<T> {
         }
     }
 
+    // Menghitung jumlah bandara transit dari teks rute.
     private static int countTransit(String path) {
         int airportCount = 1;
 
@@ -452,6 +481,7 @@ public class Graph<T> {
         return airportCount - 2;
     }
 
+    // Memeriksa apakah sebuah data sudah ada di dalam list.
     private boolean contains(MyLinearList<T> list, T data) {
         Node<T> curr = list.head;
 
@@ -465,6 +495,7 @@ public class Graph<T> {
         return false;
     }
 
+    // Mengambil bobot edge dari vertex from ke vertex to.
     public int getEdgeWeight(T from, T to) {
         if (!adj.containsKey(from)) {
             return -1;
